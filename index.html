@@ -2,50 +2,186 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+  >
+
   <title>HomeHub — Coming Soon</title>
-  <meta name="description" content="Turn an old iPad into a new device. HomeHub is coming soon.">
+
   <style>
-    * { box-sizing: border-box; }
-    html, body {
+    /* =========================
+       RESET
+    ========================= */
+
+    * {
       margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
       width: 100%;
       height: 100%;
       overflow: hidden;
       background: #05050d;
     }
+
+    /* =========================
+       PAGE
+    ========================= */
+
     body {
-      display: grid;
-      place-items: center;
-    }
-    .hero {
       width: 100vw;
       height: 100vh;
       height: 100dvh;
-      display: grid;
-      place-items: center;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      /* Prevent text/image selection */
+      user-select: none;
+      -webkit-user-select: none;
+
+      /* Prevent touch scrolling */
+      touch-action: none;
+
+      /* Prevent dragging */
+      -webkit-user-drag: none;
+    }
+
+    /* =========================
+       HERO
+    ========================= */
+
+    .hero {
+      position: fixed;
+
+      inset: 0;
+
+      width: 100vw;
+      height: 100vh;
+      height: 100dvh;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
       overflow: hidden;
+
       background: #05050d;
     }
+
+    /* =========================
+       IMAGE
+    ========================= */
+
     .hero img {
+      display: block;
+
       width: 100%;
       height: 100%;
+
+      /*
+        Keeps the entire image visible.
+        Change to "cover" if you want
+        the image to completely fill the
+        screen even if some edges get cropped.
+      */
       object-fit: contain;
-      display: block;
+
+      /*
+        Prevent image dragging
+      */
+      -webkit-user-drag: none;
+      user-drag: none;
+
+      /*
+        Prevent selecting the image
+      */
+      user-select: none;
+      -webkit-user-select: none;
+
+      /*
+        Prevent clicking/dragging
+        the image itself
+      */
+      pointer-events: none;
+
+      /*
+        Prevent weird touch behavior
+      */
+      touch-action: none;
     }
+
+    /* =========================
+       MOBILE
+    ========================= */
+
     @media (max-width: 700px) {
       .hero img {
+        /*
+          Use cover on smaller screens
+          for a more immersive full-screen
+          presentation.
+        */
         object-fit: cover;
+      }
+    }
+
+    /* =========================
+       REDUCED MOTION
+    ========================= */
+
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation: none !important;
+        transition: none !important;
       }
     }
   </style>
 </head>
+
 <body>
+
   <main class="hero">
     <img
       src="assets/homehub-hero.png"
       alt="HomeHub — Turn an old iPad into a new device"
+      draggable="false"
     >
   </main>
+
+  <script>
+    /*
+      Extra protection against image dragging.
+    */
+
+    document.addEventListener("dragstart", function (event) {
+      event.preventDefault();
+    });
+
+    /*
+      Prevent selecting the page.
+    */
+
+    document.addEventListener("selectstart", function (event) {
+      event.preventDefault();
+    });
+
+    /*
+      Prevent right-click context menu.
+      Remove this if you still want visitors
+      to be able to right-click.
+    */
+
+    document.addEventListener("contextmenu", function (event) {
+      event.preventDefault();
+    });
+  </script>
+
 </body>
 </html>
