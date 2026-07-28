@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HomeHub — Coming Soon</title>
+  <meta name="description" content="Turn an old iPad into a new device. HomeHub is coming soon.">
+  <style>
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: #05050d;
+    }
+    body {
+      display: grid;
+      place-items: center;
+    }
+    .hero {
+      width: 100vw;
+      height: 100vh;
+      height: 100dvh;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      background: #05050d;
+    }
+    .hero img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+    @media (max-width: 700px) {
+      .hero img {
+        object-fit: cover;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="hero">
+    <img
+      src="assets/homehub-hero.png"
+      alt="HomeHub — Turn an old iPad into a new device"
+    >
+  </main>
+</body>
+</html>
